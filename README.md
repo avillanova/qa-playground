@@ -7,6 +7,8 @@ Useful tools to any Quality Engineer
 	- ohmysh with useful plugins
 	- docker
 	- docker compose
+	- Kubernetes
+	- Kind
 	- nvm, node, npm
 	- vscode
 	- nvim
