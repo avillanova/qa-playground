@@ -11,23 +11,22 @@ import { QuestionFooter } from '../molecules/QuestionFooter';
 
 interface StartQuestionProps {
   data: { title: string; details: { key: string; value: string }[] };
-  setIsStarted: (isStarted: boolean) => void;
+  setIsStarted: () => void;
 }
 
 function StartQuestion(props: StartQuestionProps) {
   return (
-    <Box className="flex flex-col justify-stretch">
+    <Box className="flex items-center justify-items">
       <RecordDetails
-        className="p-5 flex-1 overflow-y-auto"
+        className="p-4 m-6 flex-1 overflow-y-auto self-start"
         title={data.title}
         details={data.details}
       />
-      <Button
-        className="flex-none p-4"
-        onClick={() => props.setIsStarted(true)}
-      >
-        Start
-      </Button>
+      <div className="p-4 bottom-0 flex-3">
+        <Button className="flex-none p-4" onClick={() => props.setIsStarted()}>
+          Start
+        </Button>
+      </div>
     </Box>
   );
 }
@@ -39,6 +38,8 @@ interface StartedQuestionProps {
     description: string;
     options: string[];
     answer: string;
+    answers: string[];
+    correctAnswers: string[];
   }[];
   currentQuestion: number;
   setIsStarted: (isStarted: boolean) => void;
@@ -77,54 +78,46 @@ function StartedQuestion(props: StartedQuestionProps) {
   );
 }
 
-function FinishedQuestion() {
+interface FinishedQuestionProps {
+  setIsFinished: (isFinished: boolean) => void;
+  setIsStarted: (isStarted: boolean) => void;
+  questions: {
+    id: string;
+    title: string;
+    description: string;
+    options: string[];
+    correctAnswer: string;
+    answer: string;
+    explanation: string;
+  }[];
+}
+
+function FinishedQuestion(props: FinishedQuestionProps) {
   return (
-    <Box className="flex items-center">
-      <article className="prose flex-1 justify-items-center items-center p-4">
-        <h2 className="">RESULTADOS</h2>
-        <p className="">Sua pontuação foi de 0 pontos</p>
+    <Box className="flex">
+      <article className="prose p-4 m-2 flex-1">
+        <h2 className="text-center">RESULTADOS</h2>
+        <p className="text-center">Sua pontuação foi de 0 pontos!</p>
       </article>
-      <div className="flex-2 p-4 overflow-y-auto">
-        Lista de questões e responstas Lista de questões e responstas Lista de
-        questões e responsztas Lista de questões e responstas Lista de questões
-        e responstas Lista de questões e responstas Lista de questões e
-        responstas Lista de questões e responstas Lista de questões e responstas
-        Lista de questões e responstas Lista de questões e responstas Lista de
-        questões e responstas Lista de questões e responstas Lista de questões e
-        responstas Lista de questões e responstas Lista de questões e
-        responstasLista de questões e responstas Lista de questões e
-        responstasLista de questões e responstas Lista de questões e
-        responstasLista de questões e responstasLista de questões e
-        responstasLista de questões e responstasLista de questões e
-        responstasLista de questões e responstas Lista de questões e
-        responstasLista de questões e responstasLista de questões e responstas
-        Lista de questões e responstas Lista de questões e responstas Lista de
-        questões e responstas Lista de questões e responstas Lista de questões e
-        responstas Lista de questões e responstas Lista de questões e responstas
-        Lista de questões e responstasLista de questões e responstasLista de
-        questões e responstas Lista de questões e responstasLista de questões e
-        responstasLista de questões e responstas Lista de questões e responstas
-        Lista de questões e responstas Lista de questões e responsztas Lista de
-        questões e responstas Lista de questões e responstas Lista de questões e
-        responstas Lista de questões e responstas Lista de questões e responstas
-        Lista de questões e responstas Lista de questões e responstas Lista de
-        questões e responstas Lista de questões e responstas Lista de questões e
-        responstas Lista de questões e responstas Lista de questões e responstas
-        Lista de questões e responstasLista de questões e responstas Lista de
-        questões e responstasLista de questões e responstas Lista de questões e
-        responstasLista de questões e responstasLista de questões e
-        responstasLista de questões e responstasLista de questões e
-        responstasLista de questões e responstas Lista de questões e
-        responstasLista de questões e responstasLista de questões e responstas
-        Lista de questões e responstas Lista de questões e responstas Lista de
-        questões e responstas Lista de questões e responstas Lista de questões e
-        responstas Lista de questões e responstas Lista de questões e responstas
-        Lista de questões e responstasLista de questões e responstasLista de
-        questões e responstas Lista de questões e responstasLista de questões e
-        responstasLista de questões e responstas
+      <div className="flex-2 p-4 m-2 overflow-y-auto">
+        {props.questions.map((question, index) => (
+          <article key={index}>
+            <p>{question.title}</p>
+            <p>{question.description}</p>
+            <p>{question.correctAnswer}</p>
+            <p>{question.answer}</p>
+          </article>
+        ))}
       </div>
-      <div className="p-4 bottom-0 flex-3">
-        <Button>Reiniciar</Button>
+      <div className="p-4 m-2 bottom-0 flex-3">
+        <Button
+          onClick={() => {
+            props.setIsFinished(false);
+            props.setIsStarted(false);
+          }}
+        >
+          Reiniciar
+        </Button>
       </div>
     </Box>
   );
@@ -153,11 +146,15 @@ export function Questions() {
     });
     setQuestions(newQuestions);
   }
+  function handleStart() {
+    setIsStarted(true);
+    setCurrentQuestion(1);
+  }
 
   return (
     <>
       {!isStarted ? (
-        <StartQuestion setIsStarted={setIsStarted} data={data} />
+        <StartQuestion setIsStarted={handleStart} data={data} />
       ) : !isFinished ? (
         <StartedQuestion
           questions={questions}
@@ -168,7 +165,11 @@ export function Questions() {
           setIsFinished={setIsFinished}
         />
       ) : (
-        <FinishedQuestion />
+        <FinishedQuestion
+          setIsFinished={setIsFinished}
+          setIsStarted={setIsStarted}
+          questions={questions}
+        />
       )}
     </>
   );

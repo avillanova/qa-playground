@@ -1,5 +1,4 @@
-import { useState } from 'react';
-
+import Markdown from 'react-markdown';
 interface QuestionProps {
   id: string;
   question: {
@@ -20,9 +19,11 @@ export function Question(props: QuestionProps) {
 
   return (
     <div className={`${props.className} ${props.visible ? '' : 'hidden'}`}>
-      <div className="p-6">
-        <h2 className="card-title">{props.question.title}</h2>
-        {props.question.description}
+      <div className="m-4">
+        <article className="prose prose-img:mx-auto">
+          <h2 className="card-title">{props.question.title}</h2>
+          <Markdown>{props.question.description}</Markdown>
+        </article>
         {props.question.options.map((option, index) => (
           <div key={index} className="flex items-center">
             <input

@@ -16,26 +16,35 @@
     {
       "id": "1",
       "title": "Questao 1",
-      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos",
+      "description": "# Welcome to Markdown\n## Explanation\n\nIn this post we will show what *Parsedown* generates out of this **markdown** snippet.\nWe will show what the resulting `HTML` looks like. We will look at:\n\n  * Headlines\n  * Formatting within text\n  * Lists\n  * Paragraphs\n  * Blockquotes\n\nNote that --- not considering the asterisk --- the actual text\ncontent starts indentend.\n\n> If you want to use a quote by someone else you can do this with a \n> blockquote like this.",
       "options": ["opcao 1", "opcao 2", "opcao 3", "opcao 4"],
+      "answers": [],
+      "correctAnswers": ["opcao 1", "opcao 2"],
       "answer": "",
-      "correctAnswer": "opcao 1"
+      "correctAnswer": "opcao 1",
+      "explanation": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos"
     },
     {
       "id": "2",
       "title": "Questao 2",
-      "description": "Lorem ipsum dolor sit amet consectetur <img src='https://picsum.photos/seed/picsum/200/300'/>adipisicing elit. Quos",
+      "description": "# Lorem ipsum dolor sit amet \n## consectetur ![Javatpoint](https://picsum.photos/seed/picsum/200/300) adipisicing elit. Quos",
       "options": ["opcao 1", "opcao 2", "opcao 3", "opcao 4"],
+      "answers": [],
+      "correctAnswers": ["opcao 1"],
       "answer": "",
-      "correctAnswer": "opcao 3"
+      "correctAnswer": "opcao 3",
+      "explanation": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos"
     },
     {
       "id": "3",
       "title": "Questao 3",
-      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. QuosLorem ipsum dolor sit amet consectetur adipisicing elit. QuosLorem ipsum dolor sit amet consectetur adipisicing elit. QuosLorem ipsum dolor sit amet consectetur adipisicing elit. QuosLorem ipsum dolor sit amet consectetur adipisicing elit. QuosLorem ipsum dolor sit amet consectetur adipisicing elit. Quos",
       "options": ["opcao 1", "opcao 2", "opcao 3", "opcao 4"],
+      "answers": [],
+      "correctAnswers": ["opcao 1", "opcao 3"],
       "answer": "",
-      "correctAnswer": "opcao 4"
+      "correctAnswer": "opcao 4",
+      "explanation": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos"
     }
   ]
 }

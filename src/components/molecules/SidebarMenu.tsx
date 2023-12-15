@@ -53,6 +53,6 @@ interface SidebarMenuProps {
 }
 export function SidebarMenu(props: SidebarMenuProps) {
   return (
-    <ul className="menu bg-base-100 h-screen shadow-lg">{props.children}</ul>
+    <ul className="menu bg-base-100  min-h-full shadow-lg">{props.children}</ul>
   );
 }

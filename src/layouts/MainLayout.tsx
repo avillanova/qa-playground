@@ -34,12 +34,12 @@ export function MainLayout(props: MainLayoutProps) {
     setIsSidebarOpen(!isSidebarOpen);
   };
   return (
-    <div>
+    <div className="flex flex-col min-h-screen">
       <header>
         <Navbar handleSidebarMenu={handleSidebarMenu} />
       </header>
-      <main className="flex-1 flex bg-base-content">
-        <div>
+      <main className="flex flex-1 h-full bg-base-content">
+        <div className="h-fit">
           <SidebarMenu collapsed={isSidebarOpen}>
             <MenuItem
               label="Dashboard"
@@ -63,9 +63,11 @@ export function MainLayout(props: MainLayoutProps) {
             </MenuItem>
           </SidebarMenu>
         </div>
-        <div className="content grid h-screen w-screen">{props.children}</div>
+        <div className="content">{props.children}</div>
       </main>
-      <Footer />
+      <div className="sticky bottom-0">
+        <Footer />
+      </div>
     </div>
   );
 }
