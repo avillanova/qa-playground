@@ -1,0 +1,30 @@
+'use client';
+
+import { useEffect, useState } from 'react';
+
+export function Chronometer({
+  setIsFinished
+}: {
+  setIsFinished: (isFinished: boolean) => void;
+}) {
+  const [totalTimeInSeconds, setTotalTimeInSeconds] = useState(60 * 60);
+  const minutes = Math.floor(totalTimeInSeconds / 60);
+  const seconds = totalTimeInSeconds % 60;
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTotalTimeInSeconds(totalTimeInSeconds - 1);
+    }, 1000);
+    if (totalTimeInSeconds === 0) {
+      setIsFinished(true);
+    }
+    return () => clearInterval(interval);
+  }, [totalTimeInSeconds]);
+
+  return (
+    <span className="font-mono text-2xl">
+      <span>{minutes.toString().padStart(2, '0')}</span>:
+      <span>{seconds.toString().padStart(2, '0')}</span>
+    </span>
+  );
+}

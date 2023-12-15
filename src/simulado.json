@@ -1,0 +1,41 @@
+{
+  "title": "Simulado 1 CTFL - Fundation Level",
+  "details": [
+    { "key": "Pré-requisitos", "value": "nenhum" },
+    { "key": "Idioma", "value": "Língua Portuguesa (Brasil)" },
+    { "key": "Número de questões", "value": "40" },
+    { "key": "Tipo de questões", "value": "múltipla escolha" },
+    {
+      "key": "Tempo de Exame",
+      "value": "60 minutos (75 min. para estrangeiros)"
+    },
+    { "key": "Pontuação", "value": "40 pontos (1 ponto por questão)" },
+    { "key": "Aprovação", "value": "mínimo de 65% de acertos ou 26 pontos" }
+  ],
+  "questions": [
+    {
+      "id": "1",
+      "title": "Questao 1",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos",
+      "options": ["opcao 1", "opcao 2", "opcao 3", "opcao 4"],
+      "answer": "",
+      "correctAnswer": "opcao 1"
+    },
+    {
+      "id": "2",
+      "title": "Questao 2",
+      "description": "Lorem ipsum dolor sit amet consectetur <img src='https://picsum.photos/seed/picsum/200/300'/>adipisicing elit. Quos",
+      "options": ["opcao 1", "opcao 2", "opcao 3", "opcao 4"],
+      "answer": "",
+      "correctAnswer": "opcao 3"
+    },
+    {
+      "id": "3",
+      "title": "Questao 3",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos",
+      "options": ["opcao 1", "opcao 2", "opcao 3", "opcao 4"],
+      "answer": "",
+      "correctAnswer": "opcao 4"
+    }
+  ]
+}
