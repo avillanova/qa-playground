@@ -1,20 +1,26 @@
+'use client';
+import { use, useEffect, useState } from 'react';
 import Markdown from 'react-markdown';
 interface QuestionProps {
-  id: string;
-  question: {
-    title: string;
-    description: string;
-    options: string[];
-    answer: string;
-  };
+  question: QuestionType;
   visible: boolean;
   className?: string;
-  onSelect: (question: string, answer: string) => void;
+  onSelect: (question: string, selection: string[]) => void;
 }
 
 export function Question(props: QuestionProps) {
+  const [selection, setSelection] = useState<string[]>([]);
+
   const handleOptionChange = (event: any) => {
-    props.onSelect(props.id, event.target.value);
+    let newSelection: string[] = [];
+    if (selection.includes(event.target.value)) {
+      newSelection = selection.filter((value) => value !== event.target.value);
+      setSelection(newSelection);
+    } else {
+      newSelection = [...selection, event.target.value];
+      setSelection(newSelection);
+    }
+    props.onSelect(props.question.id, newSelection);
   };
 
   return (
@@ -24,15 +30,21 @@ export function Question(props: QuestionProps) {
           <h2 className="card-title">{props.question.title}</h2>
           <Markdown>{props.question.description}</Markdown>
         </article>
+        <p>{selection}</p>
         {props.question.options.map((option, index) => (
           <div key={index} className="flex items-center">
             <input
-              type="radio"
+              type="checkbox"
               id={index.toString()}
-              name={props.question.title}
+              name={props.question.id}
               value={option}
+              checked={selection.includes(option)}
               onChange={handleOptionChange}
-              className="radio"
+              className="checkbox"
+              disabled={
+                !selection.includes(option) &&
+                selection.length >= props.question.correctAnswers.length
+              }
             />
             <label className="p-2">{option}</label>
           </div>

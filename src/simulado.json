@@ -1,17 +1,7 @@
 {
   "title": "Simulado 1 CTFL - Fundation Level",
-  "details": [
-    { "key": "Pré-requisitos", "value": "nenhum" },
-    { "key": "Idioma", "value": "Língua Portuguesa (Brasil)" },
-    { "key": "Número de questões", "value": "40" },
-    { "key": "Tipo de questões", "value": "múltipla escolha" },
-    {
-      "key": "Tempo de Exame",
-      "value": "60 minutos (75 min. para estrangeiros)"
-    },
-    { "key": "Pontuação", "value": "40 pontos (1 ponto por questão)" },
-    { "key": "Aprovação", "value": "mínimo de 65% de acertos ou 26 pontos" }
-  ],
+  "details": "**Pré-requisitos:** nenhum  \n**Idioma:** Língua Portuguesa (Brasil)  \n**Número de questões:** 40  \n**Tipo de questões:** múltipla escolha  \n**Tempo de Exame:** 60 minutos (75 min. para estrangeiros)  \n**Pontuação:** 40 pontos (1 ponto por questão)  \n**Aprovação:** mínimo de 65% de acertos ou 26 pontos",
+  "approval": "26",
   "questions": [
     {
       "id": "1",
@@ -20,8 +10,6 @@
       "options": ["opcao 1", "opcao 2", "opcao 3", "opcao 4"],
       "answers": [],
       "correctAnswers": ["opcao 1", "opcao 2"],
-      "answer": "",
-      "correctAnswer": "opcao 1",
       "explanation": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos"
     },
     {
@@ -31,8 +19,6 @@
       "options": ["opcao 1", "opcao 2", "opcao 3", "opcao 4"],
       "answers": [],
       "correctAnswers": ["opcao 1"],
-      "answer": "",
-      "correctAnswer": "opcao 3",
       "explanation": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos"
     },
     {
@@ -42,8 +28,6 @@
       "options": ["opcao 1", "opcao 2", "opcao 3", "opcao 4"],
       "answers": [],
       "correctAnswers": ["opcao 1", "opcao 3"],
-      "answer": "",
-      "correctAnswer": "opcao 4",
       "explanation": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos"
     }
   ]

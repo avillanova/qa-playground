@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { use, useEffect, useState } from 'react';
 import { Box } from '../atoms/Box';
 import { Button } from '../atoms/actions/Button';
 import { RecordDetails } from './RecordDetails';
@@ -10,8 +10,9 @@ import { QuestionHeader } from '../molecules/QuestionHeader';
 import { QuestionFooter } from '../molecules/QuestionFooter';
 
 interface StartQuestionProps {
-  data: { title: string; details: { key: string; value: string }[] };
+  data: { title: string; details: string };
   setIsStarted: () => void;
+  setQuestions: (questions: QuestionType[]) => void;
 }
 
 function StartQuestion(props: StartQuestionProps) {
@@ -32,18 +33,10 @@ function StartQuestion(props: StartQuestionProps) {
 }
 
 interface StartedQuestionProps {
-  questions: {
-    id: string;
-    title: string;
-    description: string;
-    options: string[];
-    answer: string;
-    answers: string[];
-    correctAnswers: string[];
-  }[];
+  questions: QuestionType[];
   currentQuestion: number;
   setIsStarted: (isStarted: boolean) => void;
-  handleAnswer: (question: string, answer: string) => void;
+  handleAnswer: (question: string, selection: string[]) => void;
   handleQuestion: (direction: string) => void;
   setIsFinished: (isFinished: boolean) => void;
 }
@@ -59,7 +52,6 @@ function StartedQuestion(props: StartedQuestionProps) {
       {props.questions.map((question, index) => (
         <Question
           key={question.id}
-          id={question.id}
           visible={props.currentQuestion === index + 1}
           question={question}
           className="flex-1 overflow-y-auto p-2"
@@ -81,15 +73,7 @@ function StartedQuestion(props: StartedQuestionProps) {
 interface FinishedQuestionProps {
   setIsFinished: (isFinished: boolean) => void;
   setIsStarted: (isStarted: boolean) => void;
-  questions: {
-    id: string;
-    title: string;
-    description: string;
-    options: string[];
-    correctAnswer: string;
-    answer: string;
-    explanation: string;
-  }[];
+  questions: QuestionType[];
 }
 
 function FinishedQuestion(props: FinishedQuestionProps) {
@@ -104,8 +88,8 @@ function FinishedQuestion(props: FinishedQuestionProps) {
           <article key={index}>
             <p>{question.title}</p>
             <p>{question.description}</p>
-            <p>{question.correctAnswer}</p>
-            <p>{question.answer}</p>
+            <p>Correct: {question.correctAnswers}</p>
+            <p>Selected: {question.answers}</p>
           </article>
         ))}
       </div>
@@ -127,20 +111,26 @@ export function Questions() {
   const [isStarted, setIsStarted] = useState(false);
   const [isFinished, setIsFinished] = useState(false);
   const [currentQuestion, setCurrentQuestion] = useState(1);
-  const [questions, setQuestions] = useState(data.questions);
-
+  const [questions, setQuestions] = useState<QuestionType[]>([]);
+  useEffect(() => {
+    const newArray: QuestionType[] = [];
+    data.questions.forEach((v, i) => {
+      const val = typeof v === 'object' ? Object.assign({}, v) : v;
+      newArray.push(val);
+    });
+    setQuestions(newArray);
+  });
   function handleQuestion(direction: string) {
     if (direction === 'next') {
-      setCurrentQuestion(currentQuestion + 1);
+      setCurrentQuestion((prevState) => prevState + 1);
     } else {
-      setCurrentQuestion(currentQuestion - 1);
+      setCurrentQuestion((prevState) => prevState - 1);
     }
   }
-  function handleAnswer(question: string, answer: string) {
-    console.log(question, answer);
+  function handleAnswer(question: string, selection: string[]) {
     const newQuestions = questions.map((item) => {
       if (item.id === question) {
-        item.answer = answer;
+        item.answers = selection;
       }
       return item;
     });
@@ -154,7 +144,11 @@ export function Questions() {
   return (
     <>
       {!isStarted ? (
-        <StartQuestion setIsStarted={handleStart} data={data} />
+        <StartQuestion
+          setQuestions={setQuestions}
+          setIsStarted={handleStart}
+          data={data}
+        />
       ) : !isFinished ? (
         <StartedQuestion
           questions={questions}
