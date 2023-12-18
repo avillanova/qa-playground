@@ -1,15 +1,16 @@
 'use client';
-import { use, useEffect, useState } from 'react';
+import { useAssessmentContext } from '@/context/AssessmentContext';
+import { useState } from 'react';
 import Markdown from 'react-markdown';
 interface QuestionProps {
   question: QuestionType;
   visible: boolean;
   className?: string;
-  onSelect: (question: string, selection: string[]) => void;
 }
 
-export function Question(props: QuestionProps) {
+export function QuestionContent(props: QuestionProps) {
   const [selection, setSelection] = useState<string[]>([]);
+  const { handleAnswer } = useAssessmentContext();
 
   const handleOptionChange = (event: any) => {
     let newSelection: string[] = [];
@@ -20,7 +21,9 @@ export function Question(props: QuestionProps) {
       newSelection = [...selection, event.target.value];
       setSelection(newSelection);
     }
-    props.onSelect(props.question.id, newSelection);
+    if (handleAnswer) {
+      handleAnswer(props.question.id, newSelection);
+    }
   };
 
   return (

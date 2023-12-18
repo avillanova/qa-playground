@@ -2,7 +2,6 @@
 import { Footer } from '@/components/molecules/Footer';
 import { Navbar } from '@/components/molecules/Navbar';
 import { MenuItem, SidebarMenu } from '@/components/molecules/SidebarMenu';
-import { Providers } from '@/providers/Provider';
 import { useState } from 'react';
 
 interface MainLayoutProps {
@@ -55,8 +54,8 @@ export function MainLayout(props: MainLayoutProps) {
                 collapsed={isSidebarOpen}
               />
               <MenuItem
-                label="Simulados"
-                href="/ctfl/simulados"
+                label="Assessments"
+                href="/ctfl/assessments"
                 icon={<Icon />}
                 collapsed={isSidebarOpen}
               />
