@@ -8,7 +8,11 @@ interface QuestionProps {
   className?: string;
 }
 
-export function QuestionContent(props: QuestionProps) {
+export function QuestionContent({
+  question,
+  visible,
+  className
+}: QuestionProps) {
   const [selection, setSelection] = useState<string[]>([]);
   const { handleAnswer } = useAssessmentContext();
 
@@ -22,30 +26,30 @@ export function QuestionContent(props: QuestionProps) {
       setSelection(newSelection);
     }
     if (handleAnswer) {
-      handleAnswer(props.question.id, newSelection);
+      handleAnswer(question.id, newSelection);
     }
   };
 
   return (
-    <div className={`${props.className} ${props.visible ? '' : 'hidden'}`}>
+    <div className={`${className} ${visible ? '' : 'hidden'}`}>
       <div className="m-4">
         <article className="prose prose-img:mx-auto">
-          <h2 className="card-title">{props.question.title}</h2>
-          <Markdown>{props.question.description}</Markdown>
+          <h2 className="card-title">{question.title}</h2>
+          <Markdown>{question.description}</Markdown>
         </article>
-        {props.question.options.map((option, index) => (
+        {question.options.map((option, index) => (
           <div key={index} className="flex items-center">
             <input
               type="checkbox"
               id={index.toString()}
-              name={props.question.id}
+              name={question.id}
               value={option}
               checked={selection.includes(option)}
               onChange={handleOptionChange}
               className="checkbox"
               disabled={
                 !selection.includes(option) &&
-                selection.length >= props.question.correctAnswers.length
+                selection.length >= question.correctAnswers.length
               }
             />
             <label className="p-2">{option}</label>

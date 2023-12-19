@@ -77,6 +77,9 @@ export function useAssessment(id: string){
                         .concat(question.correctAnswers.filter(x => !question.answers.includes(x)));
 				if(symDifference.length === 0){
 					pt += 1;
+					question.isCorrect = true;
+				}else{
+					question.isCorrect = false;
 				}
 			}
 		})

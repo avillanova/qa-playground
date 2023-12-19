@@ -26,16 +26,16 @@ interface DropdownProps {
   childrenPosition?: string;
 }
 
-export function Dropdown(dropdownProps: Readonly<DropdownProps>) {
+export function Dropdown({open, trigger, children, childrenPosition}: Readonly<DropdownProps>) {
   return (
-    <div className={`dropdown dropdown-${dropdownProps.childrenPosition}`}>
-      {dropdownProps.trigger}
-      {dropdownProps.open && (
+    <div className={`dropdown dropdown-${childrenPosition}`}>
+      {trigger}
+      {open && (
         <ul
           tabIndex={0}
           className="dropdown-content z-[1] menu shadow bg-base-100 rounded-box"
         >
-          {dropdownProps.children}
+          {children}
         </ul>
       )}
     </div>

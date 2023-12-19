@@ -8,6 +8,7 @@ interface AssessmentType {
 	title: string,
 	description: string
 	approvalScore: number,
+	time: number,
 	questions: QuestionType[]
 }
 
@@ -18,5 +19,6 @@ interface QuestionType {
 	options: string[],
 	correctAnswers: string[],
 	answers: string[]
+	isCorrect: boolean
 	explanation: string
 }

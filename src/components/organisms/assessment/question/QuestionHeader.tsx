@@ -7,10 +7,10 @@ interface QuestionHeaderProps {
   className?: string;
 }
 
-export function QuestionHeader(props: QuestionHeaderProps) {
-  const { setIsFinished, reset } = useAssessmentContext();
+export function QuestionHeader({ className }: QuestionHeaderProps) {
+  const { setIsFinished, reset, assessment } = useAssessmentContext();
   return (
-    <div className={props.className}>
+    <div className={className}>
       <div className="flex justify-between">
         <Button
           className="bg-error"
@@ -20,7 +20,7 @@ export function QuestionHeader(props: QuestionHeaderProps) {
         >
           Cancelar
         </Button>
-        <Chronometer setIsFinished={setIsFinished} />
+        <Chronometer setIsFinished={setIsFinished} time={assessment!.time} />
       </div>
     </div>
   );

@@ -1,7 +1,6 @@
 'use client';
 import { usePathname } from 'next/navigation';
 import { Link } from '../atoms/actions/Link';
-import { Fragment } from 'react';
 
 interface BreadcrumbItemProps {
   href: string;
@@ -9,12 +8,12 @@ interface BreadcrumbItemProps {
   children: React.ReactNode;
 }
 
-export function BreadcrumbItem(props: BreadcrumbItemProps) {
+export function BreadcrumbItem({ href, icon, children }: BreadcrumbItemProps) {
   return (
     <li>
-      <Link href={props.href}>
-        {props.icon}
-        {props.children}
+      <Link href={href}>
+        {icon}
+        {children}
       </Link>
     </li>
   );

@@ -3,11 +3,13 @@
 import { useEffect, useState } from 'react';
 
 export function Chronometer({
-  setIsFinished
+  setIsFinished,
+  time = 60
 }: {
   setIsFinished: (isFinished: boolean) => void;
+  time?: number;
 }) {
-  const [totalTimeInSeconds, setTotalTimeInSeconds] = useState(60 * 60);
+  const [totalTimeInSeconds, setTotalTimeInSeconds] = useState(time * 60);
   const minutes = Math.floor(totalTimeInSeconds / 60);
   const seconds = totalTimeInSeconds % 60;
 

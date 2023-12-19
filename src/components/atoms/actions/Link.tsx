@@ -4,10 +4,10 @@ interface LinkProps {
   className?: string;
 }
 
-export function Link(props: LinkProps) {
+export function Link({ href, children, className }: LinkProps) {
   return (
-    <a href={props.href} className={`link ${props.className}`}>
-      {props.children}
+    <a href={href} className={`link ${className}`}>
+      {children}
     </a>
   );
 }

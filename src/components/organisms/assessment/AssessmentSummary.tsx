@@ -15,7 +15,7 @@ export function AssessmentSummary() {
         <h2 className="card-title">{assessment?.title}</h2>
         <Markdown>{assessment?.description}</Markdown>
       </article>
-      <div className="p-4 bottom-0 flex-3">
+      <div className="p-4 bottom-0 flex-3 ">
         <Button
           className="flex-none p-4"
           onClick={() => setIsStarted && setIsStarted(true)}

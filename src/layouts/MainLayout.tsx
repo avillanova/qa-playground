@@ -27,7 +27,7 @@ function Icon() {
   );
 }
 
-export function MainLayout(props: MainLayoutProps) {
+export function MainLayout({ children }: MainLayoutProps) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const handleSidebarMenu = () => {
     setIsSidebarOpen(!isSidebarOpen);
@@ -39,7 +39,7 @@ export function MainLayout(props: MainLayoutProps) {
       </header>
       <main className="flex flex-1 h-full bg-base-content">
         <div className="h-fit">
-          <SidebarMenu collapsed={isSidebarOpen}>
+          <SidebarMenu>
             <MenuItem
               label="Dashboard"
               icon={<Icon />}
@@ -62,7 +62,7 @@ export function MainLayout(props: MainLayoutProps) {
             </MenuItem>
           </SidebarMenu>
         </div>
-        <div className="content">{props.children}</div>
+        <div className="content">{children}</div>
       </main>
       <div className="sticky bottom-0">
         <Footer />

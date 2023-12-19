@@ -2,6 +2,7 @@
   "id": "1",
   "title": "Simulado 1 CTFL - Fundation Level",
   "description": "**Pré-requisitos:** nenhum  \n**Idioma:** Língua Portuguesa (Brasil)  \n**Número de questões:** 40  \n**Tipo de questões:** múltipla escolha  \n**Tempo de Exame:** 60 minutos (75 min. para estrangeiros)  \n**Pontuação:** 40 pontos (1 ponto por questão)  \n**Aprovação:** mínimo de 65% de acertos ou 26 pontos",
+  "time": 60,
   "approvalScore": 65,
   "questions": [
     {

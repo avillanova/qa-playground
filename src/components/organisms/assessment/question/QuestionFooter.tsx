@@ -6,7 +6,7 @@ interface QuestionFooterProps {
   className?: string;
 }
 
-export function QuestionFooter(props: QuestionFooterProps) {
+export function QuestionFooter({ className }: QuestionFooterProps) {
   const {
     currentQuestion,
     questions,
@@ -16,11 +16,11 @@ export function QuestionFooter(props: QuestionFooterProps) {
   } = useAssessmentContext();
   const currentQuestionIndex = currentQuestion + 1;
   return (
-    <div className={props.className}>
+    <div className={className}>
       <div className="flex justify-between">
         <Button
           onClick={() => handleQuestion('previous')}
-          disabled={currentQuestion === 1}
+          disabled={currentQuestion === 0}
         >
           Anterior
         </Button>

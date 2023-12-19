@@ -5,40 +5,42 @@ interface MenuItemProps {
   collapsed?: boolean;
   children?: React.ReactNode;
 }
-export function MenuItem(props: MenuItemProps) {
+export function MenuItem({
+  label,
+  icon,
+  href,
+  collapsed,
+  children
+}: MenuItemProps) {
   return (
     <>
-      {!props.collapsed ? (
+      {!collapsed ? (
         <li>
-          {!props.children ? (
-            <a href={props.href}>
-              {props.icon} {props.label}
+          {!children ? (
+            <a href={href}>
+              {icon} {label}
             </a>
           ) : (
             <details open>
               <summary>
-                {props.icon} {props.label}
+                {icon} {label}
               </summary>
-              <ul>{props.children}</ul>
+              <ul>{children}</ul>
             </details>
           )}
         </li>
       ) : (
         <li>
-          {!props.children ? (
-            <a
-              href={props.href}
-              className="tooltip tooltip-right"
-              data-tip={props.label}
-            >
-              {props.icon}
+          {!children ? (
+            <a href={href} className="tooltip tooltip-right" data-tip={label}>
+              {icon}
             </a>
           ) : (
             <details>
-              <summary className="tooltip tooltip-right" data-tip={props.label}>
-                {props.icon}
+              <summary className="tooltip tooltip-right" data-tip={label}>
+                {icon}
               </summary>
-              <ul>{props.children}</ul>
+              <ul>{children}</ul>
             </details>
           )}
         </li>
@@ -48,11 +50,8 @@ export function MenuItem(props: MenuItemProps) {
 }
 
 interface SidebarMenuProps {
-  collapsed?: boolean;
   children: React.ReactNode;
 }
-export function SidebarMenu(props: SidebarMenuProps) {
-  return (
-    <ul className="menu bg-base-100  min-h-full shadow-lg">{props.children}</ul>
-  );
+export function SidebarMenu({ children }: SidebarMenuProps) {
+  return <ul className="menu bg-base-100  min-h-full shadow-lg">{children}</ul>;
 }
