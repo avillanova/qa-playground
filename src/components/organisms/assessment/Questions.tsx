@@ -16,7 +16,7 @@ export function Questions() {
             key={question.id}
             visible={currentQuestion === index}
             question={question}
-            className="flex-1 overflow-y-auto p-2"
+            className="flex-1 overflow-y-auto p-2 bg-base-300/30"
           />
         ))}
         <QuestionFooter className="p-4" />

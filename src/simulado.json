@@ -2,30 +2,50 @@
   "id": "1",
   "title": "Simulado 1 CTFL - Fundation Level",
   "description": "**Pré-requisitos:** nenhum  \n**Idioma:** Língua Portuguesa (Brasil)  \n**Número de questões:** 40  \n**Tipo de questões:** múltipla escolha  \n**Tempo de Exame:** 60 minutos (75 min. para estrangeiros)  \n**Pontuação:** 40 pontos (1 ponto por questão)  \n**Aprovação:** mínimo de 65% de acertos ou 26 pontos",
+  "time": 60,
   "approvalScore": 65,
   "questions": [
     {
       "id": "1",
       "title": "Questao 1",
-      "description": "# Welcome to Markdown\n## Explanation\n\nIn this post we will show what *Parsedown* generates out of this **markdown** snippet.\nWe will show what the resulting `HTML` looks like. We will look at:\n\n  * Headlines\n  * Formatting within text\n  * Lists\n  * Paragraphs\n  * Blockquotes\n\nNote that --- not considering the asterisk --- the actual text\ncontent starts indentend.\n\n> If you want to use a quote by someone else you can do this with a \n> blockquote like this.",
-      "options": ["opcao 1", "opcao 2", "opcao 3", "opcao 4"],
-      "correctAnswers": ["opcao 1", "opcao 2"],
+      "description": "Quais das seguintes afirmações descrevem um objetivo de teste válido?  \nSelecione UMA opção. ",
+      "options": [
+        "A) Para provar que não há defeitos não corrigidos no sistema em teste.",
+        "B) Para provar que não haverá falhas após a implementação do sistema na produção.",
+        "C) Reduzir o nível de risco do objeto de teste e aumentar a confiança no nível de qualidade.",
+        "D) Para verificar se não há combinações não testadas de entradas."
+      ],
+      "correctAnswers": [
+        "C) Reduzir o nível de risco do objeto de teste e aumentar a confiança no nível de qualidade."
+      ],
       "explanation": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos"
     },
     {
       "id": "2",
       "title": "Questao 2",
-      "description": "# Lorem ipsum dolor sit amet \n## consectetur ![Javatpoint](https://picsum.photos/seed/picsum/200/300) adipisicing elit. Quos",
-      "options": ["opcao 1", "opcao 2", "opcao 3", "opcao 4"],
-      "correctAnswers": ["opcao 1"],
+      "description": "Qual das opções a seguir mostra um exemplo que contribui para o sucesso das atividades de teste?  \nSelecione UMA opção.",
+      "options": [
+        "A) O envolvimento dos testadores durante várias atividades do ciclo de vida de desenvolvimento de software (SDLC) ajudará a detectar defeitos nos produtos de trabalho",
+        "B) Os testadores tentam não perturbar os desenvolvedores durante a codificação, para que eles escrevam um código melhor",
+        "C) Os testadores que colaboram com os usuários finais ajudam a melhorar a qualidade dos relatórios de defeitos durante a integração de componentes e o teste do sistema.",
+        "D) Os testadores certificados modelarão casos de teste muito melhores do que os testadores não certificados."
+      ],
+      "correctAnswers": [
+        "A) O envolvimento dos testadores durante várias atividades do ciclo de vida de desenvolvimento de software (SDLC) ajudará a detectar defeitos nos produtos de trabalho"
+      ],
       "explanation": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos"
     },
     {
       "id": "3",
       "title": "Questao 3",
-      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. QuosLorem ipsum dolor sit amet consectetur adipisicing elit. QuosLorem ipsum dolor sit amet consectetur adipisicing elit. QuosLorem ipsum dolor sit amet consectetur adipisicing elit. QuosLorem ipsum dolor sit amet consectetur adipisicing elit. QuosLorem ipsum dolor sit amet consectetur adipisicing elit. Quos",
-      "options": ["opcao 1", "opcao 2", "opcao 3", "opcao 4"],
-      "correctAnswers": ["opcao 1", "opcao 3"],
+      "description": "Você foi designado como testador de uma equipe que está produzindo um novo sistema de forma incremental. Você notou que nenhuma alteração foi feita nos casos de teste de regressão existentes durante várias iterações e nenhum novo defeito de regressão foi identificado. Seu gerente está feliz, mas você não está. Qual princípio de teste explica seu ceticismo?  \nSelecione UMA opção.",
+      "options": [
+        "A) Os testes se desgastam.",
+        "B) Falácia da ausência de erros.",
+        "C) Os defeitos se agrupam.",
+        "D) É impossível realizar testes exaustivos."
+      ],
+      "correctAnswers": ["A) Os testes se desgastam."],
       "explanation": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos"
     }
   ]

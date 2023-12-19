@@ -13,7 +13,7 @@ export function AssessmentResult() {
       <article className="prose p-4 m-2 flex-1">
         <h2 className="text-center">RESULTADOS - {verdict}</h2>
       </article>
-      <div className="overflow-y-auto w-full bg-scroll overflow-scroll">
+      <div className="overflow-y-auto w-full bg-base-300/30">
         <article className="prose p-4 m-2 flex-1">
           <p className="text-center">Sua pontuação foi de {points} pontos!</p>
           <p className="text-center">

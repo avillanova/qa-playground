@@ -38,7 +38,7 @@ export function QuestionContent({
           <Markdown>{question.description}</Markdown>
         </article>
         {question.options.map((option, index) => (
-          <div key={index} className="flex items-center">
+          <label placeholder="Type here" className="p-2 flex items-center">
             <input
               type="checkbox"
               id={index.toString()}
@@ -46,14 +46,14 @@ export function QuestionContent({
               value={option}
               checked={selection.includes(option)}
               onChange={handleOptionChange}
-              className="checkbox"
+              className="checkbox m-2"
               disabled={
                 !selection.includes(option) &&
                 selection.length >= question.correctAnswers.length
               }
             />
-            <label className="p-2">{option}</label>
-          </div>
+            {option}
+          </label>
         ))}
       </div>
     </div>

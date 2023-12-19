@@ -1,4 +1,4 @@
-import data from '../simulado2.json'
+import data from '../simulado.json'
 
 export function getAssessment(assessmentId: string): Promise<any> {
 	console.log('getAssessment', assessmentId)

@@ -1,3 +1,4 @@
+import Markdown from 'react-markdown';
 import { OptionResult } from './OptionResult';
 
 export function QuestionResult({ question }: { question: QuestionType }) {
@@ -8,9 +9,9 @@ export function QuestionResult({ question }: { question: QuestionType }) {
           question.isCorrect ? 'border-success' : 'border-error'
         }`}
       >
-        <article className="m-2 prose w-full">
-          <div>Titulo</div>
-          <div>decripton</div>
+        <article className="m-2 prose w-full prose-img:mx-auto">
+          <h3>{question.title}</h3>
+          <Markdown>{question.description}</Markdown>
 
           {question.options.map((option) => {
             return (
@@ -21,7 +22,7 @@ export function QuestionResult({ question }: { question: QuestionType }) {
               />
             );
           })}
-          <div>{question.explanation}</div>
+          <Markdown>{question.explanation}</Markdown>
         </article>
       </div>
     </>
