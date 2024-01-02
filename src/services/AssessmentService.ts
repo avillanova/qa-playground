@@ -3,7 +3,7 @@ import { AssessmentListType, AssessmentType } from '@/types/AssessmentType';
 export function getAssessment(assessmentId: string): Promise<any> {
   console.log('getAssessment', assessmentId);
   const assessment: Promise<AssessmentType> = fetch(
-    `http://localhost:3000/api/assessments/${assessmentId}`,
+    `/api/assessments/${assessmentId}`,
     {
       next: { revalidate: 10 }
     }
@@ -12,11 +12,8 @@ export function getAssessment(assessmentId: string): Promise<any> {
 }
 
 export function getAssessmentList(): Promise<AssessmentListType[]> {
-  const assessments: Promise<AssessmentListType[]> = fetch(
-    'http://localhost:3000/api/assessments',
-    {
-      next: { revalidate: 10 }
-    }
-  ).then((res) => res.json());
+  const assessments: Promise<AssessmentListType[]> = fetch('/api/assessments', {
+    next: { revalidate: 10 }
+  }).then((res) => res.json());
   return assessments;
 }
