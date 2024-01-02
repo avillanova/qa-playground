@@ -26,7 +26,12 @@ interface DropdownProps {
   childrenPosition?: string;
 }
 
-export function Dropdown({open, trigger, children, childrenPosition}: Readonly<DropdownProps>) {
+export function Dropdown({
+  open,
+  trigger,
+  children,
+  childrenPosition
+}: Readonly<DropdownProps>) {
   return (
     <div className={`dropdown dropdown-${childrenPosition}`}>
       {trigger}

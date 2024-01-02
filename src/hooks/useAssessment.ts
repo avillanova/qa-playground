@@ -1,57 +1,67 @@
 'use client';
-import { getAssessment, getAssessmentList } from "@/services/AssessmentService";
-import { use, useEffect, useMemo, useState } from "react";
+import { getAssessment, getAssessmentList } from '@/services/AssessmentService';
+import {
+  AssessmentListType,
+  AssessmentType,
+  QuestionType
+} from '@/types/AssessmentType';
+import { useEffect, useMemo, useState } from 'react';
 
-export function useAssessmentList(){
-	const [assessmentList, setAssessmentList] = useState<AssessmentListType[]>([])
+export function useAssessmentList() {
+  const [assessmentList, setAssessmentList] = useState<AssessmentListType[]>(
+    []
+  );
 
-	useMemo(async () => {
-		console.log('loadAssessmentList')
-		const response = await getAssessmentList()
-		setAssessmentList(response)
-	}, [])
+  useMemo(async () => {
+    console.log('loadAssessmentList');
+    const response = await getAssessmentList();
+    setAssessmentList(response);
+  }, []);
 
-	return {assessmentList}	
+  return { assessmentList };
 }
 
-export function useAssessment(id: string){
-	const [assessmentId, setAssessmentId] = useState<string>(id)
-	const [assessment, setAssessment] = useState<AssessmentType>()
-	const [isStarted, setIsStarted] = useState<boolean>(false)
-	const [isFinished, setIsFinished] = useState<boolean>(false)
-	const [currentQuestion, setCurrentQuestion] = useState<number>(0)
-	const [questions, setQuestions] = useState<QuestionType[]>([]);
-	const [points, setPoints] = useState<number>(0)
-	const [verdict, setVerdict] = useState<string>('REPROVADO')
-	
-	function reset(){
-		if(assessment){
-			const newArray: QuestionType[] = [];
-			assessment.questions.forEach((question, i) => {
-				newArray.push(Object.assign({}, question));
-			});
-			setQuestions(newArray);
-		}
-		setIsStarted(false)
-		setIsFinished(false)
-		setCurrentQuestion(0)
-		setPoints(0)
-		setVerdict('REPROVADO')
-	}
-	useEffect(() => {
-		reset()
-	}, [assessment])
+export function useAssessment(id: string) {
+  const [assessmentId, setAssessmentId] = useState<string>(id);
+  const [assessment, setAssessment] = useState<AssessmentType>();
+  const [isStarted, setIsStarted] = useState<boolean>(false);
+  const [isFinished, setIsFinished] = useState<boolean>(false);
+  const [currentQuestion, setCurrentQuestion] = useState<number>(0);
+  const [questions, setQuestions] = useState<QuestionType[]>([]);
+  const [points, setPoints] = useState<number>(0);
+  const [verdict, setVerdict] = useState<string>('REPROVADO');
 
-	useEffect(() => {
-		if(assessmentId){
-			getAssessment(assessmentId).then((response) => {
-				setAssessment(response)
-			})
-		}
-	}, [assessmentId])
+  function reset() {
+    if (assessment) {
+      const newArray: QuestionType[] = [];
+      assessment.questions.forEach((question) => {
+        newArray.push(Object.assign({}, question));
+      });
+      setQuestions(newArray);
+    }
+    setIsStarted(false);
+    setIsFinished(false);
+    setCurrentQuestion(0);
+    setPoints(0);
+    setVerdict('REPROVADO');
+  }
+  useEffect(
+    () => {
+      reset();
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [assessment]
+  );
 
+  useEffect(() => {
+    if (assessmentId) {
+      getAssessment(assessmentId).then((response) => {
+        setAssessment(response);
+      });
+    }
+  }, [assessmentId]);
 
-	function handleQuestion(direction: string) {
+  function handleQuestion(direction: string) {
     if (direction === 'next') {
       setCurrentQuestion((prevState) => prevState + 1);
     } else {
@@ -59,7 +69,7 @@ export function useAssessment(id: string){
     }
   }
 
-	function handleAnswer(question: string, selection: string[]) {
+  function handleAnswer(question: string, selection: string[]) {
     const newQuestions = questions.map((item) => {
       if (item.id === question) {
         item.answers = selection;
@@ -69,28 +79,49 @@ export function useAssessment(id: string){
     setQuestions(newQuestions);
   }
 
-	function calculatePoints(){
-		let pt = 0;
-		questions.forEach((question) => {
-			if(question.answers && question?.answers.length > 0){
-				let symDifference = question.answers.filter(x => !question.correctAnswers.includes(x))
-                        .concat(question.correctAnswers.filter(x => !question.answers.includes(x)));
-				if(symDifference.length === 0){
-					pt += 1;
-					question.isCorrect = true;
-				} else{
-					question.isCorrect = false;
-				}
-			}
-		})
-		setPoints(pt)
-		if((pt*100/questions.length) >= assessment?.approvalScore!){
-			setVerdict('APROVADO')
-		} else {
-			setVerdict('REPROVADO')
-		}
-	}
+  function calculatePoints() {
+    let pt = 0;
+    questions.forEach((question) => {
+      if (question.answers && question?.answers.length > 0) {
+        const symDifference = question.answers
+          .filter((x) => !question.correctAnswers.includes(x))
+          .concat(
+            question.correctAnswers.filter((x) => !question.answers.includes(x))
+          );
+        if (symDifference.length === 0) {
+          pt += 1;
+          question.isCorrect = true;
+        } else {
+          question.isCorrect = false;
+        }
+      }
+    });
+    setPoints(pt);
+    const approvalScore =
+      assessment?.approvalScore == undefined ? 60 : assessment?.approvalScore;
+    if ((pt * 100) / questions.length >= approvalScore) {
+      setVerdict('APROVADO');
+    } else {
+      setVerdict('REPROVADO');
+    }
+  }
 
-	return {assessmentId, assessment, isStarted, isFinished, currentQuestion, questions, points, verdict, handleQuestion, handleAnswer, setAssessmentId, setIsStarted, setIsFinished, setCurrentQuestion, reset, calculatePoints}
-
+  return {
+    assessmentId,
+    assessment,
+    isStarted,
+    isFinished,
+    currentQuestion,
+    questions,
+    points,
+    verdict,
+    handleQuestion,
+    handleAnswer,
+    setAssessmentId,
+    setIsStarted,
+    setIsFinished,
+    setCurrentQuestion,
+    reset,
+    calculatePoints
+  };
 }

@@ -21,8 +21,8 @@ export function AssessmentResult() {
           </p>
         </article>
         <div className="flex-2 p-4 self-start rounded-box">
-          {questions.map((question) => (
-            <QuestionResult question={question} />
+          {questions.map((question, index) => (
+            <QuestionResult key={index} question={question} />
           ))}
         </div>
       </div>

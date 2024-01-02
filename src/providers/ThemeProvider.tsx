@@ -1,3 +1,5 @@
+/* eslint-disable react/display-name */
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, {
   createContext,
   useCallback,
@@ -12,7 +14,7 @@ const colorSchemes = ['light', 'dark'];
 const MEDIA = '(prefers-color-scheme: dark)';
 const isServer = typeof window === 'undefined';
 const ThemeContext = createContext<UseThemeProps | undefined>(undefined);
-const defaultContext: UseThemeProps = { setTheme: (_) => {}, themes: [] };
+const defaultContext: UseThemeProps = { setTheme: () => {}, themes: [] };
 
 export const useTheme = () => useContext(ThemeContext) ?? defaultContext;
 
@@ -103,7 +105,6 @@ const Theme: React.FC<ThemeProviderProps> = ({
         ? defaultTheme
         : null;
       const colorScheme = colorSchemes.includes(resolved) ? resolved : fallback;
-      // @ts-ignore
       d.style.colorScheme = colorScheme;
     }
 

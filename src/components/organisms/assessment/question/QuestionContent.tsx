@@ -1,6 +1,7 @@
 'use client';
 import { useAssessmentContext } from '@/context/AssessmentContext';
-import { useState } from 'react';
+import { QuestionType } from '@/types/AssessmentType';
+import { Key, useState } from 'react';
 import Markdown from 'react-markdown';
 interface QuestionProps {
   question: QuestionType;
@@ -37,8 +38,12 @@ export function QuestionContent({
           <h2 className="card-title">{question.title}</h2>
           <Markdown>{question.description}</Markdown>
         </article>
-        {question.options.map((option, index) => (
-          <label placeholder="Type here" className="p-2 flex items-center">
+        {question.options.map((option: any, index: Key) => (
+          <label
+            key={index}
+            placeholder="Type here"
+            className="p-2 flex items-center"
+          >
             <input
               type="checkbox"
               id={index.toString()}

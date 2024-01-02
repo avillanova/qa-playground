@@ -13,6 +13,7 @@
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@prisma/client": "^5.7.1",
+    "@typescript-eslint/eslint-plugin": "^6.17.0",
     "@vercel/postgres": "^0.5.1",
     "next": "13.5.4",
     "prisma": "^5.7.1",

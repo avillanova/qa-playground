@@ -30,7 +30,7 @@ export function Breadcrumb() {
           if (index === pathNames.length - 1) {
             return <li key={index}>{link}</li>;
           } else {
-            let href = `/${pathNames.slice(0, index + 1).join('/')}`;
+            const href = `/${pathNames.slice(0, index + 1).join('/')}`;
             return (
               <li key={index}>
                 <Link href={href}>{link}</Link>

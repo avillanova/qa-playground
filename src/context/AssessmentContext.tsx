@@ -1,4 +1,5 @@
 'use client';
+import { AssessmentType, QuestionType } from '@/types/AssessmentType';
 import {
   Dispatch,
   SetStateAction,
@@ -44,7 +45,7 @@ export function AssessmentProvider({
 }: {
   children: React.ReactNode;
 }) {
-  const [assessment, setAssessment] = useState<AssessmentType | undefined>();
+  const [assessment] = useState<AssessmentType | undefined>();
 
   return (
     <AssessmentContext.Provider

@@ -21,7 +21,7 @@ export function Chronometer({
       setIsFinished(true);
     }
     return () => clearInterval(interval);
-  }, [totalTimeInSeconds]);
+  }, [totalTimeInSeconds, setIsFinished]);
 
   return (
     <span className="font-mono text-2xl">
