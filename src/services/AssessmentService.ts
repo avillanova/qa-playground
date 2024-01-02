@@ -2,22 +2,15 @@ import data from '../simulado.json'
 
 export function getAssessment(assessmentId: string): Promise<any> {
 	console.log('getAssessment', assessmentId)
-	return new Promise((resolve, reject) => {
-			resolve(data)
-	})
+	const assessment: Promise<void|AssessmentType> = fetch(`http://localhost:3000/api/assessments/${assessmentId}`,{
+    next: { revalidate: 10 },
+  }).then(res => res.json())
+	return assessment
 }
 
-export function getAssessmentList():  Promise<AssessmentListType[]>{
-	return new Promise((resolve, reject) => {
-		resolve([
-			{
-				id: '1',
-				title: 'Simulado 1'
-			},
-			{
-				id: '2',
-				title: 'Simulado 2'
-			}
-		])
-	})
+export function getAssessmentList():  Promise<void|AssessmentListType[]>{
+	const assessments: Promise<void|AssessmentListType[]> = fetch('http://localhost:3000/api/assessments',{
+    next: { revalidate: 10 },
+  }).then(res => res.json())
+	return assessments
 }

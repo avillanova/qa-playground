@@ -78,7 +78,7 @@ export function useAssessment(id: string){
 				if(symDifference.length === 0){
 					pt += 1;
 					question.isCorrect = true;
-				}else{
+				} else{
 					question.isCorrect = false;
 				}
 			}

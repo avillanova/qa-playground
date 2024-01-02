@@ -1,0 +1,39 @@
+generator client {
+  provider = "prisma-client-js"
+}
+ 
+datasource db {
+  provider = "postgresql"
+  url = env("POSTGRES_PRISMA_URL") // uses connection pooling
+  directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
+}
+ 
+model User {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String   @unique
+  image     String
+  createdAt DateTime @default(now())
+}
+
+model Assessment {
+  id              Int      @id @default(autoincrement())
+  title           String
+  description     String
+  time            Int
+  approvalScore   Int
+  questions       Question[]
+  createdAt       DateTime @default(now())
+}
+
+model Question {
+  id              Int           @id @default(autoincrement())
+  assessment      Assessment    @relation(fields: [assessmentId], references: [id], onDelete: Cascade)
+  assessmentId    Int           
+  title           String
+  description     String
+  explanation     String
+  options         String[]  
+  correctAnswers  String[]
+  createdAt       DateTime @default(now())
+}
