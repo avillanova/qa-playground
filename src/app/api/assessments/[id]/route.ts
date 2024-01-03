@@ -13,7 +13,17 @@ export async function GET(req: Request, context: { params: { id: string } }) {
       questions: true
     }
   });
-  return NextResponse.json(assessment);
+  const response = NextResponse.json(assessment);
+  response.headers.set('Access-Control-Allow-Origin', '*');
+  response.headers.set(
+    'Access-Control-Allow-Methods',
+    'GET, POST, PUT, DELETE, OPTIONS'
+  );
+  response.headers.set(
+    'Access-Control-Allow-Headers',
+    'Content-Type, Authorization'
+  );
+  return response;
 }
 
 export async function DELETE(
@@ -26,7 +36,17 @@ export async function DELETE(
       id: Number(context.params.id)
     }
   });
-  return NextResponse.json({
+  const response = NextResponse.json({
     message: `Assessment ${context.params.id} removed with success!`
   });
+  response.headers.set('Access-Control-Allow-Origin', '*');
+  response.headers.set(
+    'Access-Control-Allow-Methods',
+    'GET, POST, PUT, DELETE, OPTIONS'
+  );
+  response.headers.set(
+    'Access-Control-Allow-Headers',
+    'Content-Type, Authorization'
+  );
+  return response;
 }

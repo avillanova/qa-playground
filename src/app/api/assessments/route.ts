@@ -6,13 +6,23 @@ const prisma = new PrismaClient();
 export async function GET() {
   console.log('GET /api/assessments');
   const assessments = await prisma.assessment.findMany();
-  return NextResponse.json(assessments);
+  const response = NextResponse.json(assessments);
+  response.headers.set('Access-Control-Allow-Origin', '*');
+  response.headers.set(
+    'Access-Control-Allow-Methods',
+    'GET, POST, PUT, DELETE, OPTIONS'
+  );
+  response.headers.set(
+    'Access-Control-Allow-Headers',
+    'Content-Type, Authorization'
+  );
+  return response;
 }
 
 export async function POST(req: Request) {
   const data = await req.json();
   console.log(data);
-  const response = await prisma.assessment.create({
+  const res = await prisma.assessment.create({
     data: {
       title: data.title,
       description: data.description,
@@ -23,5 +33,15 @@ export async function POST(req: Request) {
       }
     }
   });
-  return NextResponse.json(response, { status: 201 });
+  const response = NextResponse.json(res, { status: 201 });
+  response.headers.set('Access-Control-Allow-Origin', '*');
+  response.headers.set(
+    'Access-Control-Allow-Methods',
+    'GET, POST, PUT, DELETE, OPTIONS'
+  );
+  response.headers.set(
+    'Access-Control-Allow-Headers',
+    'Content-Type, Authorization'
+  );
+  return response;
 }
