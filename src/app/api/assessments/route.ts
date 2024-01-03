@@ -1,25 +1,18 @@
 import { PrismaClient } from '@prisma/client';
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 
 const prisma = new PrismaClient();
 
-export async function GET() {
+export async function GET(request: NextRequest) {
+  const allowedOrigin = request.headers.get('origin');
+  console.log('Origin: ', allowedOrigin);
   console.log('GET /api/assessments');
   const assessments = await prisma.assessment.findMany();
   const response = NextResponse.json(assessments);
-  response.headers.set('Access-Control-Allow-Origin', '*');
-  response.headers.set(
-    'Access-Control-Allow-Methods',
-    'GET, POST, PUT, DELETE, OPTIONS'
-  );
-  response.headers.set(
-    'Access-Control-Allow-Headers',
-    'Content-Type, Authorization'
-  );
-  return response;
+  return response.json();
 }
 
-export async function POST(req: Request) {
+export async function POST(req: NextRequest) {
   const data = await req.json();
   console.log(data);
   const res = await prisma.assessment.create({
@@ -34,17 +27,5 @@ export async function POST(req: Request) {
     }
   });
   const response = NextResponse.json(res, { status: 201 });
-  response.headers.set(
-    'Access-Control-Allow-Origin',
-    'https://qa-playground.vercel.app'
-  );
-  response.headers.set(
-    'Access-Control-Allow-Methods',
-    'GET, POST, PUT, DELETE, OPTIONS'
-  );
-  response.headers.set(
-    'Access-Control-Allow-Headers',
-    'Content-Type, Authorization'
-  );
   return response;
 }

@@ -14,15 +14,6 @@ export async function GET(req: Request, context: { params: { id: string } }) {
     }
   });
   const response = NextResponse.json(assessment);
-  response.headers.set('Access-Control-Allow-Origin', '*');
-  response.headers.set(
-    'Access-Control-Allow-Methods',
-    'GET, POST, PUT, DELETE, OPTIONS'
-  );
-  response.headers.set(
-    'Access-Control-Allow-Headers',
-    'Content-Type, Authorization'
-  );
   return response;
 }
 
@@ -39,14 +30,5 @@ export async function DELETE(
   const response = NextResponse.json({
     message: `Assessment ${context.params.id} removed with success!`
   });
-  response.headers.set('Access-Control-Allow-Origin', '*');
-  response.headers.set(
-    'Access-Control-Allow-Methods',
-    'GET, POST, PUT, DELETE, OPTIONS'
-  );
-  response.headers.set(
-    'Access-Control-Allow-Headers',
-    'Content-Type, Authorization'
-  );
   return response;
 }
