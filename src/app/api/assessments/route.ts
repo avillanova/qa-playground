@@ -9,7 +9,7 @@ export async function GET(request: NextRequest) {
   console.log('GET /api/assessments');
   const assessments = await prisma.assessment.findMany();
   const response = NextResponse.json(assessments);
-  return response.json();
+  return response;
 }
 
 export async function POST(req: NextRequest) {
