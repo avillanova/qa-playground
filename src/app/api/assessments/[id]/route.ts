@@ -16,10 +16,7 @@ export async function GET(req: Request, context: { params: { id: string } }) {
   return NextResponse.json(assessment);
 }
 
-export async function DELETE(
-  req: Request,
-  context: { params: { id: string } }
-) {
+export async function DELETE(context: { params: { id: string } }) {
   console.log('DELETE', context.params.id);
   await prisma.assessment.delete({
     where: {
