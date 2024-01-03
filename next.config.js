@@ -6,6 +6,7 @@ const nextConfig = {
         // matching all API routes
         source: '/api/:path*',
         headers: [
+          { key: 'Access-Control-Allow-Credentials', value: 'false' },
           {
             key: 'Access-Control-Allow-Origin',
             value: 'https://qa-playground.vercel.app'
