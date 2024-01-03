@@ -23,9 +23,9 @@ export function getAssessmentList(): Promise<AssessmentListType[]> {
 }
 
 function getBaseUrl() {
-  console.log(`Base Url: ${process.env.NEXT_PUBLIC_VERCEL_URL}`);
+  console.log(`Base Url: ${process.env.NOW}`);
   if (process.env.NEXT_PUBLIC_VERCEL_URL?.includes('localhost')) {
     return `http://${process.env.NEXT_PUBLIC_VERCEL_URL}`;
   }
-  return `https://qa-playground.vercel.app`;
+  return `https://${process.env.NOW}`;
 }
