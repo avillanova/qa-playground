@@ -14,16 +14,15 @@ export function getAssessment(assessmentId: string): Promise<any> {
 
 export function getAssessmentList(): Promise<AssessmentListType[]> {
   console.log('get List');
-  const options = {
-    method: 'GET',
-    headers: {
-      'content-type': 'application/json'
-    },
-    next: { revalidate: 10 }
-  };
   const assessments: Promise<AssessmentListType[]> = fetch(
     `${getBaseUrl()}/api/assessments`,
-    options
+    {
+      next: { revalidate: 10 },
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }
   ).then((res) => res.json());
   return assessments;
 }
