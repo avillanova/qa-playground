@@ -34,7 +34,10 @@ export async function POST(req: Request) {
     }
   });
   const response = NextResponse.json(res, { status: 201 });
-  response.headers.set('Access-Control-Allow-Origin', '*');
+  response.headers.set(
+    'Access-Control-Allow-Origin',
+    'https://qa-playground.vercel.app'
+  );
   response.headers.set(
     'Access-Control-Allow-Methods',
     'GET, POST, PUT, DELETE, OPTIONS'
