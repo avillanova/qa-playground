@@ -5,7 +5,8 @@ export function getAssessment(assessmentId: string): Promise<any> {
   const assessment: Promise<AssessmentType> = fetch(
     `${getBaseUrl()}/api/assessments/${assessmentId}`,
     {
-      next: { revalidate: 10 }
+      next: { revalidate: 10 },
+      mode: 'cors'
     }
   ).then((res) => res.json());
   return assessment;
@@ -16,7 +17,8 @@ export function getAssessmentList(): Promise<AssessmentListType[]> {
   const assessments: Promise<AssessmentListType[]> = fetch(
     `${getBaseUrl()}/api/assessments`,
     {
-      next: { revalidate: 10 }
+      next: { revalidate: 10 },
+      mode: 'cors'
     }
   ).then((res) => res.json());
   return assessments;
