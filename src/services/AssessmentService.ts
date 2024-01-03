@@ -16,16 +16,19 @@ export function getAssessmentList(): Promise<AssessmentListType[]> {
   const assessments: Promise<AssessmentListType[]> = fetch(
     `${getBaseUrl()}/api/assessments`,
     {
-      next: { revalidate: 10 }
+      next: { revalidate: 10 },
+      headers: {
+        'Content-Type': 'application/json'
+      }
     }
   ).then((res) => res.json());
   return assessments;
 }
 
 function getBaseUrl() {
-  console.log(`Base Url: ${process.env.NOW}`);
+  console.log(`Base Url: ${process.env.NEXT_PUBLIC_VERCEL_URL}`);
   if (process.env.NEXT_PUBLIC_VERCEL_URL?.includes('localhost')) {
     return `http://${process.env.NEXT_PUBLIC_VERCEL_URL}`;
   }
-  return `https://${process.env.NOW}`;
+  return `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`;
 }

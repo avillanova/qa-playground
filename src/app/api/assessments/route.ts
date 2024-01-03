@@ -4,8 +4,8 @@ import { NextRequest, NextResponse } from 'next/server';
 const prisma = new PrismaClient();
 
 export async function GET(request: NextRequest) {
-  const allowedOrigin = request.headers.get('origin');
-  console.log('Origin: ', allowedOrigin);
+  const origin = request.headers.get('origin');
+  console.log('Origin: ', origin);
   console.log('GET /api/assessments');
   const assessments = await prisma.assessment.findMany();
   const response = NextResponse.json(assessments);
