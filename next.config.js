@@ -10,11 +10,12 @@ module.exports = {
           },
           {
             key: 'Access-Control-Allow-Methods',
-            value: 'GET,OPTIONS,PATCH,DELETE,POST,PUT'
+            value: '*'
           },
           {
             key: 'Access-Control-Allow-Headers',
-            value: 'Content-Type'
+            value:
+              'Content-Type, Origin, Accept, Content-Length, Authorization, Accept-Encoding, X-CSRF-Token, X-Requested-With'
           }
         ]
       }
