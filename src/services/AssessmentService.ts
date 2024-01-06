@@ -16,10 +16,7 @@ export function getAssessmentList(): Promise<AssessmentListType[]> {
   const assessments: Promise<AssessmentListType[]> = fetch(
     `${getBaseUrl()}/api/assessments`,
     {
-      next: { revalidate: 10 },
-      headers: {
-        'Content-Type': 'application/json'
-      }
+      next: { revalidate: 10 }
     }
   ).then((res) => res.json());
   return assessments;
