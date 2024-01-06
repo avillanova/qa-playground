@@ -7,7 +7,7 @@ const nextConfig = {
         headers: [
           {
             key: 'Access-Control-Allow-Origin',
-            value: '*'
+            value: 'https://auvp.com.br/auvp-sempre/'
           },
           {
             key: 'Access-Control-Allow-Methods',
