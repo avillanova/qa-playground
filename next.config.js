@@ -7,7 +7,7 @@ const nextConfig = {
         headers: [
           {
             key: 'Access-Control-Allow-Origin',
-            value: '*'
+            value: 'https://batata.vercel.app'
           },
           {
             key: 'Access-Control-Allow-Methods',
