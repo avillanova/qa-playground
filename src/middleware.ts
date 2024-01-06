@@ -15,17 +15,17 @@ export function middleware(request: NextRequest) {
   const response = NextResponse.next();
 
   console.log('Response Headers: ', response.headers);
-  response.headers.set('Access-Control-Allow-Origin', '*');
-  response.headers.set('Access-Control-Allow-Credentials', 'true');
-  response.headers.set(
-    'Access-Control-Allow-Methods',
-    'GET, POST, PUT, DELETE, OPTION'
-  );
-  response.headers.set(
-    'Access-Control-Allow-Headers',
-    'Content-Type, Authorization'
-  );
-  response.headers.set('Access-Control-Expose-Headers', '');
+  // response.headers.set('Access-Control-Allow-Origin', '*');
+  // response.headers.set('Access-Control-Allow-Credentials', 'true');
+  // response.headers.set(
+  //   'Access-Control-Allow-Methods',
+  //   'GET, POST, PUT, DELETE, OPTION'
+  // );
+  // response.headers.set(
+  //   'Access-Control-Allow-Headers',
+  //   'Content-Type, Authorization'
+  // );
+  // response.headers.set('Access-Control-Expose-Headers', '');
 
   return response;
 }
