@@ -6,7 +6,7 @@ module.exports = {
         headers: [
           {
             key: 'Access-Control-Allow-Origin',
-            value: 'https://www.alejandroperez.dev'
+            value: 'https://qa-playground.vercel.app'
           },
           {
             key: 'Access-Control-Allow-Methods',
