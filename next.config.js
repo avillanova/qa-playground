@@ -7,7 +7,7 @@ const nextConfig = {
         headers: [
           {
             key: 'Access-Control-Allow-Origin',
-            value: 'https://www.qa-playground.vercel.app/'
+            value: 'https://qa-playground.vercel.app'
           },
           {
             key: 'Access-Control-Allow-Methods',
