@@ -18,6 +18,7 @@ export async function POST(req: NextRequest) {
   const res = await prisma.assessment.create({
     data: {
       title: data.title,
+      source: data.source,
       description: data.description,
       time: data.time,
       approvalScore: data.approvalScore,
