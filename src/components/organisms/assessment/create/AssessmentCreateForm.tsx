@@ -70,7 +70,7 @@ export function AssessmentCreateForm() {
     // console.log(formData);
     // POST the data to the URL of the form
     //call service
-    //setFormSuccess(true);
+    setFormSuccess(true);
   };
 
   return (
