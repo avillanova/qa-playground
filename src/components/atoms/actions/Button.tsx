@@ -12,6 +12,7 @@ interface ButtonProps {
   onClick?: () => void;
   className?: string;
   disabled?: boolean;
+  type?: 'button' | 'submit' | 'reset';
 }
 
 function Button(props: Readonly<ButtonProps>) {
@@ -30,6 +31,7 @@ function Button(props: Readonly<ButtonProps>) {
       className={`btn ${buttonType} ${props.className}`}
       onClick={props.onClick}
       disabled={props.disabled}
+      type={props.type}
     >
       {props.children}
     </button>

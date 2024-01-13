@@ -46,16 +46,20 @@ export function MainLayout({ children }: MainLayoutProps) {
               href="/"
               collapsed={isSidebarOpen}
             />
-            <MenuItem label="CTFL" icon={<Icon />} collapsed={isSidebarOpen}>
+            <MenuItem
+              label="Assessments"
+              icon={<Icon />}
+              collapsed={isSidebarOpen}
+            >
               <MenuItem
-                label="Detalhes"
-                href="/ctfl"
+                label="List"
+                href="/assessments/list"
                 icon={<Icon />}
                 collapsed={isSidebarOpen}
               />
               <MenuItem
-                label="Assessments"
-                href="/ctfl/assessments"
+                label="Create"
+                href="/assessments/create"
                 icon={<Icon />}
                 collapsed={isSidebarOpen}
               />

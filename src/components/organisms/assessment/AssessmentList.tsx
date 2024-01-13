@@ -12,7 +12,7 @@ export function AssessmentList() {
         <div key={assessment.id} className="flex flex-col">
           <h2 className="card-title">{assessment.title}</h2>
           <Link
-            href={`/ctfl/assessments/${assessment.id}`}
+            href={`/assessments/list/${assessment.id}`}
             className="flex-1 overflow-y-auto p-2"
           >
             {assessment.title}

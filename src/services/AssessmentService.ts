@@ -1,4 +1,5 @@
 import { AssessmentListType, AssessmentType } from '@/types/AssessmentType';
+import { getBaseUrl } from './ServiceBase';
 
 export function getAssessment(assessmentId: string): Promise<any> {
   console.log('getAssessment', assessmentId);
@@ -20,12 +21,4 @@ export function getAssessmentList(): Promise<AssessmentListType[]> {
     }
   ).then((res) => res.json());
   return assessments;
-}
-
-function getBaseUrl() {
-  console.log(`Base Url: ${process.env.NEXT_PUBLIC_VERCEL_URL}`);
-  if (process.env.NEXT_PUBLIC_VERCEL_URL?.includes('localhost')) {
-    return `http://${process.env.NEXT_PUBLIC_VERCEL_URL}`;
-  }
-  return `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`;
 }

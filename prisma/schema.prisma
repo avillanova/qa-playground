@@ -18,6 +18,7 @@ model User {
 
 model Assessment {
   id              Int      @id @default(autoincrement())
+  source          String
   title           String
   description     String
   time            Int
@@ -37,3 +38,4 @@ model Question {
   correctAnswers  String[]
   createdAt       DateTime @default(now())
 }
+
